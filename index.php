@@ -36,11 +36,17 @@ if(isset($_SESSION["user_id"])){
         
     </header>
 
+    <main>
+
         <h1>Baby Ready</h1>
 
         <?php if (isset($user)): ?>
 
-            <h2>Welcome, <?= htmlspecialchars($user["name"])?>!</h2>
+        <h2><?= htmlspecialchars($user["name"])?>, let's get baby ready!</h2>
+
+        <h3><a href="to-do-list.html"> To-Do List</a></h3>
+        <h3><a href="shopping-list.html"> Shopping List</a></h3>
+
 
         <?php else: ?>
 
@@ -49,6 +55,11 @@ if(isset($_SESSION["user_id"])){
 
         <?php endif; ?>
 
+    </main>
+
+        <footer>
+            <p>Website by Stephanie Marzan</p>
+        </footer>
     
 </body>
 </html>

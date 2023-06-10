@@ -7,33 +7,50 @@
     <title>Baby Ready</title>
 </head>
 <body>
-
-    <h1>Sign Up</h1>
     
-    <form action="process-signup.php" method="post" novalidate>
-        <div>
-            <label for="name">Name</label>
-            <input type="text" name="name" id="name">
-        </div>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="login.php">Login</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <div>
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email">
-        </div>
-
-        <div>
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password">
-        </div>
-
-        <div>
-            <label for="password-confirmation">Confirm Password</label>
-            <input type="password" name="password-confirmation" id="password-confirmation">
-        </div>
-
-        <button type="submit">Create Account</button>
-
-    </form>
+    <main>
+        <h1>Sign Up</h1>
     
+        <form action="process-signup.php" method="post">
+            <div>
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" required>
+            </div>
+
+            <div>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" required>
+            </div>
+
+            <div>
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" required>
+            </div>
+
+            <div>
+                <label for="password-confirmation">Confirm Password</label>
+                <input type="password" name="password-confirmation" id="password-confirmation" required>
+            </div>
+
+            <button type="submit">Create Account</button>
+
+        </form>
+    
+
+    </main>
+
+    
+    <footer>
+        <p>Website by Stephanie Marzan</p>
+    </footer>
+
 </body>
 </html>

@@ -41,14 +41,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     <title>Home Page</title>
 </head>
 <body>
+    <nav>
+         <ul>
+            <li><a href="signup.html">Sign Up</a></li>
+        </ul>
+    </nav>
+
+    <main>
+
     <h1?>Baby Ready</h1>
 
     <form method="post">
         <label for="email">Email Address</label>
-        <input type="email" name="email" id="email" value="<?= htmlspecialchars($_POST["email"] ?? "")?>">
+        <input type="email" name="email" id="email" value="<?= htmlspecialchars($_POST["email"] ?? "")?>" required>
 
         <label for="password">Password</label>
-        <input type="password" name="password" id="password">
+        <input type="password" name="password" id="password" required>
 
         <button type="submit">Log In</button>
     </form>
@@ -56,6 +64,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     <?php if($pass_invalid): ?>
         <p>The password entered is incorrect. Please try again.</p>
     <?php endif; ?>
+
+    </main>
+
+    <footer>
+            <p>Website by Stephanie Marzan</p>
+    </footer>
     
 </body>
 </html>

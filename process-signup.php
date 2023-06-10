@@ -32,7 +32,7 @@ if ($stmt->execute()){
     exit;
 } else {
     if ($mysqli->errno === 1062){
-    die("An account with this email address may already exist.");
+    die("An account with this email address may already exist. Use a different email address or try logging in, instead. <button><a href='login.php'>Login</a></button>");
     }
 }
 

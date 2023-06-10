@@ -28,9 +28,12 @@ if (! $stmt->prepare($sql)){
 $stmt->bind_param("sss", $_POST["name"], $_POST["email"], $password_hash);
 
 if ($stmt->execute()){
-    echo "Signup Successful";
+    header("Location: index.php");
+    exit;
 } else {
-     die("An account with this email address may already exist.");
+    if ($mysqli->errno === 1062){
+    die("An account with this email address may already exist.");
+    }
 }
 
 

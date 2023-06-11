@@ -44,8 +44,8 @@ if(isset($_SESSION["user_id"])){
 
         <h2><?= htmlspecialchars($user["name"])?>, let's get baby ready!</h2>
 
-        <h3><a href="to-do-list.html"> To-Do List</a></h3>
-        <h3><a href="shopping-list.html"> Shopping List</a></h3>
+        <h3><a href="to-do-list.php"> To-Do List</a></h3>
+        <h3><a href="shopping-list.php"> Shopping List</a></h3>
 
 
         <?php else: ?>

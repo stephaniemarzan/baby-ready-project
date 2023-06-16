@@ -24,29 +24,8 @@ $userid = $_SESSION["user_id"];
          } 
 }
 
-/*
-
-$mysqli = require __DIR__ . "/database.php";
-
-if(isset($_POST['submit'])){
-
-    $task = $_POST['task'];
-
-   $sql = "INSERT INTO tasks (task) VALUES ('$task')";
-
-   $stmt = $mysqli -> stmt_init();
-   
-   if (! $stmt->prepare($sql)){
-    die("Error: " . $mysqli->error);
-    }
-
-    if ($stmt->execute()){
-        header("Location: to-do-list.php");
-        exit;
-    } 
-
-}*/
-
+    $tasks = mysqli_query($mysqli, "SELECT * FROM tasks WHERE userid = '$userid'");
+    $tasknumber = 1;
 ?>
 
 <!DOCTYPE html>
@@ -85,13 +64,19 @@ if(isset($_POST['submit'])){
             </thead>
 
             <tbody>
+
+            <?php 
+            while ($row = mysqli_fetch_array($tasks)){ ?>
                 <tr>
-                    <td>1</td>
-                    <td>Placeholder</td>
+                    <td><?php echo $tasknumber++; ?></td>
+                    <td><?php echo $row['task']; ?></td>
                     <td>
                         <a href="#">x</a>
                     </td>
                 </tr>
+            <?php
+            } ?>
+            
             </tbody>
         </table>
     </main>

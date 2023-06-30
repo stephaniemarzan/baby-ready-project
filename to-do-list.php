@@ -8,6 +8,8 @@ $userid = $_SESSION["user_id"];
 
 $error = "";
 
+// Add task to database
+
 $task = $_POST['task'];
 
     if(isset($_POST['submit'])){
@@ -31,6 +33,8 @@ $task = $_POST['task'];
      
 }
 
+// Task Deleted
+
 if(isset($_GET['delete_task'])){
     $taskdeleteid = $_GET['delete_task'];
     mysqli_query($mysqli,"DELETE FROM tasks WHERE id=$taskdeleteid");
@@ -39,6 +43,29 @@ if(isset($_GET['delete_task'])){
 
     $tasks = mysqli_query($mysqli, "SELECT * FROM tasks WHERE userid = '$userid'");
     $tasknumber = 1;
+
+    $edit_state = false;
+
+// Task Edits
+
+if(isset($_GET['edit_task'])){
+    $id = $_GET['edit_task'];
+    $edit_state = true;
+    $rec = mysqli_query($mysqli, "SELECT * FROM tasks WHERE id = '$id'");
+    $record = mysqli_fetch_array($rec);
+    $task = $record['task'];
+    $id = $record['id'];
+}
+
+if(isset($_POST['update'])){
+    $task = $_POST['task'];
+    $id = $_POST['id'];
+
+    mysqli_query($mysqli, "UPDATE tasks SET task='$task' WHERE id=$id");
+    header('location: to-do-list.php');
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -71,8 +98,16 @@ if(isset($_GET['delete_task'])){
 
             <?php } ?>
 
-            <input type="text" name="task" id="taskentry" placeholder="Type task here.">
-            <button type="submit" name="submit">Add Task</button>
+            <input type="hidden" name="id" value="<?php echo $id;?>">
+
+            <input type="text" name="task" id="taskentry" placeholder="Type task here." value="<?php echo $task; ?>">
+
+            <?php if($edit_state == false):?>
+                <button type="submit" name="submit">Add Task</button>
+            <?php else: ?>
+                <button type="submit" name="update">Update</button>
+            <?php endif ?>
+
         </form>
 
         <table>

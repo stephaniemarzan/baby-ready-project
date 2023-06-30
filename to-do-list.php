@@ -32,10 +32,9 @@ $task = $_POST['task'];
 }
 
 if(isset($_GET['delete_task'])){
-    $taskid = $_GET['delete_task'];
-    mysqli_query($mysqli,"DELETE FROM tasks WHERE id=$taskid");
+    $taskdeleteid = $_GET['delete_task'];
+    mysqli_query($mysqli,"DELETE FROM tasks WHERE id=$taskdeleteid");
     header('location: to-do-list.php');
-
 }
 
     $tasks = mysqli_query($mysqli, "SELECT * FROM tasks WHERE userid = '$userid'");
@@ -54,6 +53,7 @@ if(isset($_GET['delete_task'])){
     <header>
         <nav>
         <ul>
+             <li><a href="index.php">Home</a></li>
             <li><a href="logout.php">Logout</a></li>
         </ul>
         </nav>
@@ -93,6 +93,9 @@ if(isset($_GET['delete_task'])){
                     <td><?php echo $row['task']; ?></td>
                     <td>
                         <a href="to-do-list.php?delete_task=<?php echo $row['id'];?>">x</a>
+                    </td>
+                    <td>
+                        <a href="to-do-list.php?edit_task=<?php echo $row['id'];?>">Edit</a>
                     </td>
                 </tr>
             <?php

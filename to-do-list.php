@@ -41,6 +41,8 @@ if(isset($_GET['delete_task'])){
     header('location: to-do-list.php');
 }
 
+// Display Task Variables
+
     $tasks = mysqli_query($mysqli, "SELECT * FROM tasks WHERE userid = '$userid'");
     $tasknumber = 1;
 
@@ -81,6 +83,7 @@ if(isset($_POST['update'])){
         <nav>
         <ul>
              <li><a href="index.php">Home</a></li>
+             <li><a href="shopping-list.php">Shopping List</a></li>
             <li><a href="logout.php">Logout</a></li>
         </ul>
         </nav>

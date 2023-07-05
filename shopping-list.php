@@ -35,7 +35,8 @@ $shortened_link = $_POST['item-link'];
 
 // Display Item Variables
 
-$items = mysqli_query($mysqli, "SELECT * FROM shopping WHERE userid = '$userid'");
+$items = mysqli_query($mysqli, "SELECT * FROM shopping WHERE userid = '$userid' AND done is NULL");
+$doneitems = mysqli_query($mysqli, "SELECT * FROM shopping WHERE userid = '$userid' AND done='1'");
 $itemnumber = 1;
 
 $edit_state = false;
@@ -70,6 +71,13 @@ if(isset($_POST['update'])){
 
 }
 
+// Done Item
+
+if(isset($_GET['done_item'])){
+    $itemdoneid = $_GET['done_item'];
+    mysqli_query($mysqli,"UPDATE shopping SET done='1'  WHERE id=$itemdoneid");
+    header('location: shopping-list.php');
+}
 
 ?>
 
@@ -144,13 +152,17 @@ if(isset($_POST['update'])){
 
         </form>
 
+        <h2>Pending Items</h2>
+
         <table>
             <thead>
                 <tr>
                     <th>#</th>
                     <th>Item</th>
                     <th>Link</th>
-                    <th>Action</th>
+                    <th>Delete</th>
+                    <th>Edit</th>
+                    <th>Done?</th>
                 </tr>
             </thead>
 
@@ -168,12 +180,31 @@ if(isset($_POST['update'])){
                         <td>
                             <a href="shopping-list.php?edit_item=<?php echo $row['id'];?>">Edit</a>
                         </td>
+                        <td>
+                            <a href="shopping-list.php?done_item=<?php echo $row['id'];?>">Done</a>
+                        </td>
                     </tr>
                 <?php
                 } ?>
             
             </tbody>
         
+        </table>
+
+        <h2>Items Bought</h2>
+
+        <table>
+            <tbody>
+            <?php 
+                while ($row = mysqli_fetch_array($doneitems)){ ?>
+                    <tr>
+                        <td><?php echo $row['item']; ?></td>
+                        <td><?php echo $row['link']; ?></td>
+                        <td>
+                </tr>
+                <?php
+                } ?>
+            </tbody>
         </table>
 
 

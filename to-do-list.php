@@ -43,7 +43,8 @@ if(isset($_GET['delete_task'])){
 
 // Display Task Variables
 
-    $tasks = mysqli_query($mysqli, "SELECT * FROM tasks WHERE userid = '$userid'");
+    $tasks = mysqli_query($mysqli, "SELECT * FROM tasks WHERE userid = '$userid' AND done is NULL");
+    $donetasks = mysqli_query($mysqli, "SELECT * FROM tasks WHERE userid = '$userid' AND done='1'");
     $tasknumber = 1;
 
     $edit_state = false;
@@ -66,6 +67,14 @@ if(isset($_POST['update'])){
     mysqli_query($mysqli, "UPDATE tasks SET task='$task' WHERE id=$id");
     header('location: to-do-list.php');
 
+}
+
+// Task Done
+
+if(isset($_GET['done_task'])){
+    $taskdoneid = $_GET['done_task'];
+    mysqli_query($mysqli,"UPDATE tasks SET done='1'  WHERE id=$taskdoneid");
+    header('location: to-do-list.php');
 }
 
 ?>
@@ -118,7 +127,10 @@ if(isset($_POST['update'])){
                 <tr>
                     <th>#</th>
                     <th>Task</th>
-                    <th>Action</th>
+                    <th>Delete</th>
+                    <th>Edit</th>
+                    <th>Done?</th>
+
                 </tr>
             </thead>
 
@@ -135,10 +147,27 @@ if(isset($_POST['update'])){
                     <td>
                         <a href="to-do-list.php?edit_task=<?php echo $row['id'];?>">Edit</a>
                     </td>
+                    <td>
+                        <a href="to-do-list.php?done_task=<?php echo $row['id'];?>">Done</a>
+                    </td>
                 </tr>
             <?php
             } ?>
             
+            </tbody>
+        </table>
+
+        <h2>Completed Tasks</h2>
+
+        <table>
+            <tbody>
+            <?php 
+                while ($row = mysqli_fetch_array($donetasks)){ ?>
+                    <tr>
+                        <td><?php echo $row['task']; ?></td>
+                    </tr>
+                <?php
+                } ?>
             </tbody>
         </table>
     </main>

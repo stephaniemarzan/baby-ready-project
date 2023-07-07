@@ -27,13 +27,6 @@ if(isset($_SESSION["user_id"])){
 <body>
 
     <header>
-
-    <nav>
-        <ul>
-        <li><a href="signup.html">Signup</a></li>
-        </ul>
-    </nav>
-        
     </header>
 
     <main>

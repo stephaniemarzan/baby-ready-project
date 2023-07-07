@@ -30,7 +30,7 @@ if(isset($_SESSION["user_id"])){
 
     <nav>
         <ul>
-            <li><a href="logout.php">Logout</a></li>
+        <li><a href="signup.html">Signup</a></li>
         </ul>
     </nav>
         

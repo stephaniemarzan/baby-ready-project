@@ -51,7 +51,7 @@ if(isset($_SESSION["user_id"])){
         <?php else: ?>
 
         <button><a href="login.php">Login</a></button>
-        <button><a href="signup.php">Signup</a></button>
+        <button><a href="signup.html">Signup</a></button>
 
         <?php endif; ?>
 

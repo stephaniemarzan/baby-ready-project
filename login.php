@@ -39,6 +39,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://use.typekit.net/ufc4fds.css">
+
 </head>
 <body>
     <nav>
@@ -47,25 +51,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
         </ul>
     </nav>
 
-    <main>
+        <main class="container">
 
-    <h1?>Baby Ready</h1>
+        <img src="images/main-logo.svg" alt="Baby Ready Logo" class="main-logo">
 
-    <form method="post">
-        <label for="email">Email Address</label>
-        <input type="email" name="email" id="email" value="<?= htmlspecialchars($_POST["email"] ?? "")?>" required>
+        <form method="post">
+            <label for="email">Email Address</label>
+            <input type="email" name="email" id="email" value="<?= htmlspecialchars($_POST["email"] ?? "")?>" required>
 
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" required>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" required>
 
-        <button type="submit">Log In</button>
-    </form>
+            <button type="submit">Log In</button>
+        </form>
 
-    <?php if($pass_invalid): ?>
-        <p>The password entered is incorrect. Please try again.</p>
-    <?php endif; ?>
+        <?php if($pass_invalid): ?>
+            <p>The password entered is incorrect. Please try again.</p>
+        <?php endif; ?>
 
-    </main>
+        </main>
 
     <footer>
             <p>Website by Stephanie Marzan</p>

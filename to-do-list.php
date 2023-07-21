@@ -86,6 +86,10 @@ if(isset($_GET['done_task'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://use.typekit.net/ufc4fds.css">
+
 </head>
 <body>
     <header>

@@ -1,0 +1,56 @@
+/* ====== General Styling ======= */
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-color: #F1E2D4;
+}
+
+nav,
+footer{
+    background-color: #D5CFCA; 
+}
+
+p,label,input{
+    font-family: "warnock-pro-display", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+}
+
+h1{
+    font-family: "broadacre-medium-0", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 20px;
+}
+
+h2{
+    font-family: "broadacre-regular-0", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 18px;
+}
+
+button{
+    font-family: "broadacre-regular-0", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    text-transform: uppercase;
+    background-color: #C67FB2;
+    color: white;
+    border-radius: 10px;
+    padding: 10px 25px;
+}
+
+img .main-logo {
+    width: 300px;
+    margin: 0 auto;
+}
+
+.container{
+    max-width: 80%;
+}

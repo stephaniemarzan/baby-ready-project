@@ -33,9 +33,9 @@ if(isset($_SESSION["user_id"])){
     <header>
     </header>
 
-    <main>
+    <main class="container">
 
-        <h1>Baby Ready</h1>
+        <a href="index.php"><img src="images/main-logo.svg" alt="Baby Ready Logo" class="main-logo"></a>
 
         <?php if (isset($user)): ?>
 
@@ -46,9 +46,13 @@ if(isset($_SESSION["user_id"])){
 
 
         <?php else: ?>
+        
+        <div class="main-content">
+                
+            <a href="login.php"><button class="btn">Login</button></a>
+            <a href="signup.html"><button class="btn">Signup</button></a>
 
-        <button><a href="login.php">Login</a></button>
-        <button><a href="signup.html">Signup</a></button>
+        </div>
 
         <?php endif; ?>
 

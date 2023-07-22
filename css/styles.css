@@ -19,6 +19,7 @@ p,label,input{
     font-weight: 400;
     font-style: normal;
     font-size: 16px;
+    color: #1e1e1e;
 }
 
 h1{
@@ -35,7 +36,7 @@ h2{
     font-size: 18px;
 }
 
-button{
+.btn{
     font-family: "broadacre-regular-0", sans-serif;
     font-weight: 300;
     font-style: normal;
@@ -44,13 +45,104 @@ button{
     color: white;
     border-radius: 10px;
     padding: 10px 25px;
+    border: none;
+    max-width: 200px;
+    margin: 0 auto;
+    display: block;
+    margin-top: 20px;
 }
 
-img .main-logo {
+.btn:hover{
+    color:#C67FB2;
+    background-color: white;
+    border: #C67FB2 2px solid;
+}
+
+img.main-logo {
     width: 300px;
     margin: 0 auto;
+    display: block;
 }
 
 .container{
     max-width: 80%;
+    margin: 0 auto;
+    padding: 100px 0;
+}
+
+a{
+    text-decoration: none;
+}
+
+nav ul {
+    padding: 2em 5em;
+    display: flex;
+    list-style: none;
+    margin: 0;
+}
+
+nav ul li a{
+    font-family: "broadacre-regular-0", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    text-transform: uppercase;
+    color: #1e1e1e;
+    display: block;
+}
+
+.nav-item-push{
+    margin-left: auto;
+}
+
+a.nav-logo{
+    font-family: "broadacre-light-2", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    text-transform: uppercase;
+    color: #1e1e1e;
+}
+
+footer p{
+    text-align: center;
+    padding: 50px 0;
+}
+
+footer {
+    bottom: 0;
+    width: 100%;
+}
+
+input{
+    border: none;
+    border-bottom: 2px solid #C67FB2;
+    background: none;
+    padding:0 10px;
+}
+
+input:focus{
+    outline: none;
+    background: none;
+}
+
+.main-content{
+    padding: 50px 0;
+}
+
+.header-image{
+    object-fit: cover;
+    width: 100%;
+    height: 300px;
+}
+/* ====== Login ======= */
+
+.form-user{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 50px 0;
+}
+
+.form-input{
+    padding: 10px 0;
 }

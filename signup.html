@@ -15,36 +15,44 @@
     <header>
         <nav>
             <ul>
-                <li><a href="login.php">Login</a></li>
+                <li><a href="index.php" class="nav-logo">Baby Ready</a></li>
+                <li class="nav-item-push"><a href="login.php">Login</a></li>
             </ul>
         </nav>
+
+        <img src="images/pacifier.jpg" alt="Image of baby clothes and pacifier" class="header-image">
+
     </header>
 
-    <main>
-        <h1>Sign Up</h1>
+    <main class="container">
+        <a href="index.php"><img src="images/main-logo.svg" alt="Baby Ready Logo" class="main-logo"></a>
     
-        <form action="process-signup.php" method="post">
-            <div>
-                <label for="name">Name</label>
-                <input type="text" name="name" id="name" required>
-            </div>
 
-            <div>
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" required>
-            </div>
+        <div class="form-user">
+            <form action="process-signup.php" method="post">
+                <div  class="form-input">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" required>
+                </div>
 
-            <div>
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" required>
-            </div>
+                <div  class="form-input">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" required>
+                </div>
 
-            <div>
-                <label for="password-confirmation">Confirm Password</label>
-                <input type="password" name="password-confirmation" id="password-confirmation" required>
-            </div>
+                <div  class="form-input">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" required>
+                </div>
 
-            <button type="submit">Create Account</button>
+                <div  class="form-input">
+                    <label for="password-confirmation">Confirm Password</label>
+                    <input type="password" name="password-confirmation" id="password-confirmation" required>
+                </div>
+            </form>
+        </div>
+
+            <button type="submit" class="btn">Create Account</button>
 
         </form>
     

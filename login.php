@@ -45,29 +45,43 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
 
 </head>
 <body>
-    <nav>
-         <ul>
-            <li><a href="signup.html">Sign Up</a></li>
-        </ul>
-    </nav>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.php" class="nav-logo">Baby Ready</a></li>
+                <li class="nav-item-push"><a href="signup.html">Sign Up</a></li>
+            </ul>
+        </nav>
+
+        <img src="images/baby-feet.jpg" alt="Image of baby feet" class="header-image">
+        
+    </header>
 
         <main class="container">
 
-        <img src="images/main-logo.svg" alt="Baby Ready Logo" class="main-logo">
+        <a href="index.php"><img src="images/main-logo.svg" alt="Baby Ready Logo" class="main-logo"></a>
 
-        <form method="post">
-            <label for="email">Email Address</label>
-            <input type="email" name="email" id="email" value="<?= htmlspecialchars($_POST["email"] ?? "")?>" required>
+            <div class="form-user">
+                <form method="post">
+                    <div class="form-input">
+                        <label for="email">Email Address</label>
+                        <input type="email" name="email" id="email" value="<?= htmlspecialchars($_POST["email"] ?? "")?>" required>
+                    </div>
 
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" required>
+                    <div class="form-input">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" required>
+                    </div>
+                    
+                </form>
 
-            <button type="submit">Log In</button>
-        </form>
+            </div>
 
-        <?php if($pass_invalid): ?>
-            <p>The password entered is incorrect. Please try again.</p>
-        <?php endif; ?>
+            <button type="submit" class="btn">Log In</button>
+
+            <?php if($pass_invalid): ?>
+                <p>The password entered is incorrect. Please try again.</p>
+            <?php endif; ?>
 
         </main>
 

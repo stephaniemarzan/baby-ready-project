@@ -27,13 +27,20 @@ h1{
     font-weight: 500;
     font-style: normal;
     font-size: 20px;
+    color: #1e1e1e;
 }
 
-h2{
+h2,h3{
     font-family: "broadacre-regular-0", sans-serif;
     font-weight: 300;
     font-style: normal;
     font-size: 18px;
+    text-align: center;
+    color: #1e1e1e;
+}
+
+h3 a{
+    color: #1e1e1e;
 }
 
 .btn{
@@ -145,4 +152,28 @@ input:focus{
 
 .form-input{
     padding: 10px 0;
+}
+
+/* ====== Logged In User Home ======= */
+
+.home-nav-options a svg{
+    font-size: 100px;
+    margin: 0 auto;
+    display: block;
+}
+
+.home-nav{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 50px 0;
+}
+
+.home-nav-options{
+    padding: 30px 50px;
+}
+
+.home-nav-options h3{
+    padding-top: 20px;
 }

@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
         </nav>
 
         <img src="images/baby-feet.jpg" alt="Image of baby feet" class="header-image">
-        
+
     </header>
 
         <main class="container">
@@ -72,16 +72,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
                         <label for="password">Password</label>
                         <input type="password" name="password" id="password" required>
                     </div>
+
+                    <button type="submit" class="btn">Log In</button>
+
+                    <?php if($pass_invalid): ?>
+                        <p>The password entered is incorrect. Please try again.</p>
+                    <?php endif; ?>
                     
                 </form>
 
             </div>
-
-            <button type="submit" class="btn">Log In</button>
-
-            <?php if($pass_invalid): ?>
-                <p>The password entered is incorrect. Please try again.</p>
-            <?php endif; ?>
 
         </main>
 

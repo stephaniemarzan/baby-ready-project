@@ -64,13 +64,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
             <div class="form-user">
                 <form method="post">
                     <div class="form-input">
-                        <label for="email">Email Address</label>
-                        <input type="email" name="email" id="email" value="<?= htmlspecialchars($_POST["email"] ?? "")?>" required>
+                        <input type="email" name="email" id="email" value="<?= htmlspecialchars($_POST["email"] ?? "")?>" required placeholder="Email Address">
                     </div>
 
                     <div class="form-input">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" id="password" required>
+                        <input type="password" name="password" id="password" required placeholder="Password">
                     </div>
 
                     <button type="submit" class="btn">Log In</button>

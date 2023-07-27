@@ -14,7 +14,7 @@ footer{
     background-color: #D5CFCA; 
 }
 
-p,label,input{
+p,label,input, td{
     font-family: "warnock-pro-display", serif;
     font-weight: 400;
     font-style: normal;
@@ -28,6 +28,8 @@ h1{
     font-style: normal;
     font-size: 20px;
     color: #1e1e1e;
+    text-align: center;
+    text-transform: uppercase;
 }
 
 h2,h3{
@@ -37,6 +39,7 @@ h2,h3{
     font-size: 18px;
     text-align: center;
     color: #1e1e1e;
+    text-transform: uppercase;
 }
 
 h3 a{
@@ -154,6 +157,15 @@ input:focus{
     padding: 10px 0;
 }
 
+.form-input input{
+    text-align: center;
+}
+
+.form-input input::placeholder {
+    color: #1e1e1e;
+    opacity: 1;
+}
+
 /* ====== Logged In User Home ======= */
 
 .home-nav-options a svg{
@@ -176,4 +188,87 @@ input:focus{
 
 .home-nav-options h3{
     padding-top: 20px;
+}
+
+/* ====== To Do List + Shopping List ======= */
+
+.input-entry{
+    display: flex;
+    flex-direction: column;
+    padding: 50px 0;
+}
+
+.input-entry input{
+    text-align: center;
+}
+
+.list-table th{
+    display: none;
+
+}
+
+table{
+    width: 100%;
+}
+
+.list-table td{
+    display: grid;
+    grid-template-columns: 12ch auto;
+}
+
+.list-table td::before{
+    content: attr(data-cell) ": ";
+    font-family: "broadacre-regular-0", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 18px;
+    color: #EB8B8F;
+    text-transform: uppercase;
+}
+
+.list-table td:first-child{
+    padding-top: 2rem;
+}
+
+.completed-items {
+    padding-top: 2rem;
+}
+
+.completed-items h2 {
+    padding-bottom: 2rem;
+}
+
+td::first-letter{
+    text-transform: capitalize;
+}
+
+/* ====== Media Queries ======= */
+
+@media (min-width: 650px){
+
+    .list-table td{
+        display: revert;
+    }
+
+    .list-table th{
+        display: revert;
+        font-family: "broadacre-regular-0", sans-serif;
+        font-weight: 300;
+        font-style: normal;
+        font-size: 18px;
+        color: #1e1e1e;
+        text-transform: uppercase;
+    }
+
+    .input-entry{
+        flex-direction: row;
+    }
+
+    .list-table td::before{
+        display: none;
+    }
+
+    .list-table td:first-child {
+        padding-top: 0;
+    }
 }

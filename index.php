@@ -47,7 +47,12 @@ if(isset($_SESSION["user_id"])){
             </ul>
         </nav>
 
+        <?php if (isset($user)): ?>
+
          <img src="images/outfit.jpg" alt="Image of baby outfit" class="header-image">
+
+        <?php endif; ?>
+        
     </header>
 
     <main class="container">

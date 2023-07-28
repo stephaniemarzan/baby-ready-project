@@ -148,6 +148,11 @@ font-style: italic;
     padding-top: 2em;
 }
 
+.error-signup{
+    text-align: center;
+    padding: 1rem;
+}
+
 /* ====== Login ======= */
 
 .form-user{

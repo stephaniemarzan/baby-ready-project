@@ -1,60 +1,7 @@
 <?php
 
 $errorsignup = false;
-/*
-if (empty($_POST["name"])) {
-    die("Please enter a name.");
-}
 
-if ( ! filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-    die("Please enter a valid email address");
-}
-
-if ( ! filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-    die("Please enter a valid email address");
-}
-
-if(strlen($_POST["password"])<8){
-    die("Please enter a password that is at least 8 characters long.");
-}
-
-if(! preg_match("/[a-z]/i", $_POST["password"])){
-    die("Your password must contain at least one letter.");
-}
-
-if(! preg_match("/[0-9]/i", $_POST["password"])){
-    die("Your password must contain at least one number.");
-}
-
-if ($_POST["password"] !== $_POST["password-confirmation"]){
-    die("The passwords entered do not match.");
-}
-
-$password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
-
-$mysqli = require __DIR__ . "/database.php";
-
-$sql = "INSERT INTO user (name, email, password_hash)
-        VALUES (?, ?, ?)";
-
-$stmt = $mysqli -> stmt_init();
-
-if (! $stmt->prepare($sql)){
-    die("Error: " . $mysqli->error);
-}
-
-$stmt->bind_param("sss", $_POST["name"], $_POST["email"], $password_hash);
-
-if ($stmt->execute()){
-    header("Location: login.php");
-    exit;
-} else {
-    if ($mysqli->errno === 1062){
-    die("An account with this email address may already exist. Use a different email address or try logging in, instead. <button><a href='login.php'>Login</a></button>");
-    }
-}
-
-*/
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,6 +29,19 @@ if ($stmt->execute()){
     <h1>It looks like we found some issues..</h1>
 
     <?php
+
+        if (empty($_POST["name"])) {
+            $errorsignup = true;
+            ?>
+            <p class="error-signup">Please enter a name.</p>
+        <?php
+        }
+        if ( ! filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+            $errorsignup = true;
+            ?>
+            <p class="error-signup">Please enter a valid email address.</p>
+        <?php
+        }
 
         if(strlen($_POST["password"])<8){
             $errorsignup = true;

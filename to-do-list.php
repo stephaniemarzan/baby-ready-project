@@ -101,7 +101,7 @@ if(isset($_GET['done_task'])){
     <header>
         <nav>
         <ul>
-             <li><a href="index.php">Home</a></li>
+             <li><a href="index.php" class="home-link">Home</a></li>
              <li><a href="shopping-list.php">Shopping List</a></li>
             <li class="nav-item-push"><a href="logout.php">Logout</a></li>
         </ul>

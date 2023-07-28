@@ -102,7 +102,7 @@ if(isset($_GET['done_item'])){
     <header>
         <nav>
         <ul>
-            <li><a href="index.php">Home</a></li>
+            <li><a href="index.php" class="home-link">Home</a></li>
              <li><a href="to-do-list.php">To Do List</a></li>
              <li class="nav-item-push"><a href="logout.php">Logout</a></li>
         </ul>

@@ -85,10 +85,11 @@ a{
 }
 
 nav ul {
-    padding: 2em 5em;
+    padding: 2em 1.5em;
     display: flex;
     list-style: none;
     margin: 0;
+    justify-content: space-between;
 }
 
 nav ul li a{
@@ -98,10 +99,6 @@ nav ul li a{
     text-transform: uppercase;
     color: #1e1e1e;
     display: block;
-}
-
-.nav-item-push{
-    margin-left: auto;
 }
 
 a.nav-logo{
@@ -287,6 +284,14 @@ p.shortened-link{
 /* ====== Media Queries ======= */
 
 @media (min-width: 650px){
+
+    .nav-item-push{
+        margin-left: auto;
+    }
+
+    a.home-link {
+        padding-right: 2em;
+    }
 
     .list-table td{
         display: revert;

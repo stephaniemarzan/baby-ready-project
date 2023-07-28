@@ -46,7 +46,6 @@ if(isset($_GET['delete_task'])){
     $tasks = mysqli_query($mysqli, "SELECT * FROM tasks WHERE userid = '$userid' AND done is NULL");
     $donetasks = mysqli_query($mysqli, "SELECT * FROM tasks WHERE userid = '$userid' AND done='1'");
     $tasknumber = 1;
-    $completedtasknumber = 1;
 
     $edit_state = false;
 
@@ -158,10 +157,10 @@ if(isset($_GET['done_task'])){
                         <?php 
                         while ($row = mysqli_fetch_array($tasks)){ ?>
                             <tr>
-                                <td data-cell="#"><?php echo $tasknumber++; ?></td>
+                                <td data-cell="#" class="list-control"><?php echo $tasknumber++; ?></td>
                                 <td data-cell="Task"><?php echo $row['task']; ?></td>
 
-                                <td data-cell="Edit">
+                                <td data-cell="Edit" class="list-control">
                                     <a href="to-do-list.php?edit_task=<?php echo $row['id'];?>">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
                                         <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
@@ -169,7 +168,7 @@ if(isset($_GET['done_task'])){
                                         </svg>
                                     </a>
                                 </td>
-                                <td data-cell="Done">
+                                <td data-cell="Done" class="list-control">
                                     <a href="to-do-list.php?done_task=<?php echo $row['id'];?>">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
                                         <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
@@ -177,7 +176,7 @@ if(isset($_GET['done_task'])){
                                         </svg>
                                     </a>
                                 </td>
-                                <td data-cell="Delete">
+                                <td data-cell="Delete" class="list-control">
                                     <a href="to-do-list.php?delete_task=<?php echo $row['id'];?>">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
                                         <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
@@ -192,26 +191,26 @@ if(isset($_GET['done_task'])){
                         </tbody>
                     </table>
 
+                    </div>
+                   
+                    <hr>
+
                     <div class="completed-items">
                         <h2>Completed Tasks</h2>
 
-                            <table>
-                                <tbody>
-                                <?php 
+                            <div class="list-area-complete">
+                                <ul>
+                                <?php
                                     while ($row = mysqli_fetch_array($donetasks)){ ?>
-                                        <tr>
-                                            <td data-cell="#"><?php echo $completedtasknumber++; ?></td>
-                                            <td><?php echo $row['task']; ?></td>
-                                        </tr>
+        
+                                    <li><?php echo $row['task']; ?></li>
                                     <?php
-                                    } ?>
-                                </tbody>
-                            </table>
+                                            } ?>
+                                </ul>
+                            </div>
 
                     </div>
     
-
-                </div>
                 
         </div>
 

@@ -116,11 +116,14 @@ if(isset($_GET['done_item'])){
         <div class="main-content">
 
             <h1>Shopping List</h1>
-            
-            <form action="shopping-list.php" method="post">
-                <input type="text" name="link-entry" id="link-entry" placeholder="Link entry here.">
-                <button type="submit" class="btn">Shorten Link</button>
-            </form>
+
+                <form action="shopping-list.php" method="post">
+
+                    <div class="input-entry">
+                    <input type="text" name="link-entry" id="link-entry" placeholder="Link entry here.">
+                    <button type="submit" class="btn" name="slink-submit">Shorten Link</button>
+                    </div>
+                </form>
 
 
             <?php
@@ -139,102 +142,116 @@ if(isset($_GET['done_item'])){
     
             $link_result = json_decode(curl_exec($ch));
 
-            ?>
+            $slink_submit= $_POST['slink-submit'];
 
-            <p>Your shortened URL is: <?php echo $link_result->link;  ?></p> 
+             if(isset($slink_submit)){ ?>
+            <p class="shortened-link">Your shortened URL is: <?php echo $link_result->link;  ?></p> 
+            <?php }?>
 
 
-            <form action="shopping-list.php" method="post">
+                <form action="shopping-list.php" method="post">
 
-            <?php if(isset($error)){ ?>
+                <?php if(isset($error)){ ?>
 
-                <p><?php echo $error ?></p>
+                    <p><?php echo $error ?></p>
 
-                <?php } ?>
+                    <?php } ?>
 
-                <input type="hidden" name="id" value="<?php echo $id;?>">
 
-                <input type="text" name="item" id="itementry" placeholder="Enter the item name here." value="<?php echo $item; ?>">
+                    <div class="input-entry">
+                        <input type="hidden" name="id" value="<?php echo $id;?>">
 
-                <input type="text" name="item-link" id="itemlink" placeholder="Enter the shortened link here." value="<?php echo $shortened_link; ?>">
+                        <input type="text" name="item" id="itementry" placeholder="Your item name here." value="<?php echo $item; ?>">
+
+                        <input type="text" name="item-link" id="itemlink" placeholder="The short link here." value="<?php echo $shortened_link; ?>">
+                    
+                        <?php if($edit_state == false):?>
+                        <button type="submit" name="submit-item" class="btn">Add Item</button>
+                        <?php else: ?>
+                            <button type="submit" name="update" class="btn">Update</button>
+                        <?php endif ?>
+                    </div>
+
+                </form>
             
-                <?php if($edit_state == false):?>
-                <button type="submit" name="submit-item" class="btn">Add Item</button>
-                <?php else: ?>
-                    <button type="submit" name="update" class="btn">Update</button>
-                <?php endif ?>
-
-            </form>
-
-            <h2>Pending Items</h2>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Item</th>
-                        <th>Link</th>
-                        <th>Edit</th>
-                        <th>Done</th>
-                        <th>Delete</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-
-                    <?php 
-                    while ($row = mysqli_fetch_array($items)){ ?>
+            <div class="list-area">
+                <table class="list-table">
+                    <thead>
                         <tr>
-                            <td><?php echo $itemnumber++; ?></td>
-                            <td><?php echo $row['item']; ?></td>
-                            <td><?php echo $row['link']; ?></td>
-                            <td>
-                                <a href="shopping-list.php?edit_item=<?php echo $row['id'];?>">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
-                                        <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                        <path d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"/>
-                                    </svg>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="shopping-list.php?done_item=<?php echo $row['id'];?>">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
-                                    <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                    <path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/>
-                                    </svg>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="shopping-list.php?delete_item=<?php echo $row['id'];?>">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
-                                    <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                    <path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/>
-                                    </svg>
-                                </a>
-                            </td>
+                            <th>#</th>
+                            <th>Item</th>
+                            <th>Link</th>
+                            <th>Edit</th>
+                            <th>Done</th>
+                            <th>Delete</th>
                         </tr>
-                    <?php
-                    } ?>
+                    </thead>
+                    <tbody>
+                        <?php
+                        while ($row = mysqli_fetch_array($items)){ ?>
+                            <tr>
+                                <td data-cell="#" class="list-control"><?php echo $itemnumber++; ?></td>
+                                <td data-cell="Item" class="list-control"><?php echo $row['item']; ?></td>
+                                <td data-cell="Link" class="list-control"><?php echo $row['link']; ?></td>
+                                <td data-cell="Edit" class="list-control">
+                                    <a href="shopping-list.php?edit_item=<?php echo $row['id'];?>">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
+                                            <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                            <path d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"/>
+                                        </svg>
+                                    </a>
+                                </td>
+                                <td data-cell="Done" class="list-control">
+                                    <a href="shopping-list.php?done_item=<?php echo $row['id'];?>">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
+                                        <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                        <path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/>
+                                        </svg>
+                                    </a>
+                                </td>
+                                <td data-cell="Delete" class="list-control">
+                                    <a href="shopping-list.php?delete_item=<?php echo $row['id'];?>">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
+                                        <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                        <path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/>
+                                        </svg>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php
+                        } ?>
                 
-                </tbody>
-            
-            </table>
+                    </tbody>
+                
+                </table>
+            </div>
 
-            <h2>Items Bought</h2>
+            <hr>
 
-            <table>
-                <tbody>
-                <?php 
-                    while ($row = mysqli_fetch_array($doneitems)){ ?>
+            <div class="completed-items">
+                <h2>Items Bought</h2>
+                <div class="list-area-complete">
+                    <table class="list-table">
+                    <thead>
                         <tr>
-                            <td><?php echo $row['item']; ?></td>
-                            <td><?php echo $row['link']; ?></td>
-                            <td>
-                    </tr>
-                    <?php
-                    } ?>
-                </tbody>
-            </table>
+                            <th>Item</th>
+                            <th>Link</th>
+                        </tr>
+                    </thead>
+                        <tbody>
+                        <?php
+                            while ($row = mysqli_fetch_array($doneitems)){ ?>
+                                <tr>
+                                    <td data-cell="Item"><?php echo $row['item']; ?></td>
+                                    <td data-cell="Link"><?php echo $row['link']; ?></td>
+                            </tr>
+                            <?php
+                            } ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
         </div>
 
 

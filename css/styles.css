@@ -231,7 +231,9 @@ table{
 }
 
 .completed-items {
-    padding-top: 2rem;
+    padding: 2rem;
+    background: #D3D3D3;
+    margin-top: 2rem;
 }
 
 .completed-items h2 {
@@ -240,6 +242,46 @@ table{
 
 td::first-letter{
     text-transform: capitalize;
+}
+
+.completed-items ul {
+    list-style: none; 
+    max-width: 50%;
+    margin: 0 auto;
+  }
+  
+.completed-items ul li::before {
+    content: "\2022"; 
+    color: #EB8B8F; 
+    font-weight: bold; 
+    display: inline-block; 
+    width: 1em; 
+    margin-left: -1em;
+  }
+
+.completed-items ul li::first-letter{
+    text-transform: capitalize;
+  }
+
+.input-entry {
+    max-width: 60%;
+    margin: 0 auto;
+}
+
+hr{
+    border: 2px dotted #EFAF7A;
+    margin-top: 2rem;
+}
+
+.list-area{
+    padding: 2rem;
+    background: #E1E9E9;
+    margin-top: 2rem;
+}
+
+p.shortened-link{
+    text-align: center;
+    font-weight: 700;
 }
 
 /* ====== Media Queries ======= */
@@ -256,7 +298,7 @@ td::first-letter{
         font-weight: 300;
         font-style: normal;
         font-size: 18px;
-        color: #1e1e1e;
+        color: #EB8B8F; 
         text-transform: uppercase;
     }
 
@@ -268,7 +310,24 @@ td::first-letter{
         display: none;
     }
 
-    .list-table td:first-child {
+    .list-table td {
+        padding: 0.5rem 0.5rem;
+    }
+
+    .list-control{
+        text-align: center;
+    }
+
+    .list-table td:first-child{
         padding-top: 0;
     }
+
+    input#taskentry,
+    input#link-entry {
+        width: 60%;
+}
+
+.list-area-complete .list-table td {
+    text-align: center;
+}
 }

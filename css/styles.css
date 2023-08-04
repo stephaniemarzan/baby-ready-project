@@ -60,6 +60,7 @@ h3 a{
     margin: 0 auto;
     display: block;
     margin-top: 20px;
+    border: solid 2px purple;
 }
 
 .btn:hover{

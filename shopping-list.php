@@ -87,6 +87,7 @@ if(isset($_GET['done_item'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="An application for expectant parents. This application will allow you to organize your tasks and create a shopping list in order to get you ready for your baby."> 
     <title>Shopping List</title>
 
     <!-- CSS -->

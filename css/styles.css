@@ -146,6 +146,7 @@ input:focus{
 .password-reminder{
 font-style: italic;
     padding-top: 2em;
+    text-align: center;
 }
 
 .error-signup{
